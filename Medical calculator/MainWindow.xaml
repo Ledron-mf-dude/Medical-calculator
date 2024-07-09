@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medical_calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow"
+        Height="600"
+        Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border Background="#075252"
+            CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock 
+                Text="Med Calculation"
+                Foreground="AliceBlue"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="15,0,0,0"
+                FontSize="25"/>
+            <StackPanel Grid.Row="1">
+                <RadioButton
+                    Content="GFR calculator"
+                    Foreground="AliceBlue"
+                    Height="50"
+                    FontSize="18"
+                    Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton
+                    Content="BSA calculator"
+                    Foreground="AliceBlue"
+                    Height="50"
+                    FontSize="18"
+                    Style="{StaticResource MenuButtonTheme}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
