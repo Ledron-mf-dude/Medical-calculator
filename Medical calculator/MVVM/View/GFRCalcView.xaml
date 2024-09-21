@@ -204,6 +204,8 @@
                 <Button x:Name="CalculateButton"
                         Content="Calculate"
                         HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,0,10"
                         Width="150"
                         Height="40"
                         Grid.Row="4"
@@ -214,10 +216,10 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="PART_Border"
-                CornerRadius="10"
-                Background="{TemplateBinding Background}" 
-                BorderBrush="{TemplateBinding BorderBrush}" 
-                BorderThickness="1">
+                                    CornerRadius="10"
+                                    Background="{TemplateBinding Background}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="1">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                             <ControlTemplate.Triggers>

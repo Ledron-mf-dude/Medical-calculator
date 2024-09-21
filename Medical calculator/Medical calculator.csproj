@@ -91,7 +91,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MVVM\Model\ParamsForGRF.cs" />
+    <Compile Include="MVVM\Model\BSACalculator.cs" />
+    <Compile Include="MVVM\Model\DataStructures\BSATemplateParams.cs" />
+    <Compile Include="MVVM\Model\DataStructures\ParamsForBSA.cs" />
+    <Compile Include="MVVM\Model\GFRCalculator.cs" />
+    <Compile Include="MVVM\Model\DataStructures\GFRTemplateParams.cs" />
+    <Compile Include="MVVM\Model\DataStructures\ParamsForGRF.cs" />
+    <Compile Include="MVVM\Model\TemplateGenerator.cs" />
     <Compile Include="MVVM\ViewModel\BSACalcViewModel.cs" />
     <Compile Include="MVVM\ViewModel\GFRCalcViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
