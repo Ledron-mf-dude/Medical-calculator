@@ -13,7 +13,7 @@
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
                                      FontSize="20"
-                                     Text="{TemplateBinding Text}"
+                                     Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}"
                                      BorderThickness ="0"
                                      Background="Transparent"
                                      VerticalAlignment="Center"

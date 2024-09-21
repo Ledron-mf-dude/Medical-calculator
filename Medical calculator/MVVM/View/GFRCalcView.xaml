@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Medical_calculator.MVVM.View"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type =local:GFRCalcView, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
     
     <Border CornerRadius ="0,15,15,15" Background="#558a8a">
@@ -19,8 +20,8 @@
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="60"/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
             
             <TextBlock Grid.Row="0"
@@ -36,9 +37,11 @@
                        FontSize="20"
                        Foreground="White"/>
 
-            <TextBox Grid.Row="0"
+            <TextBox x:Name="AgeTextBox"
+                     Grid.Row="0"
                      Grid.Column="1"
                      Margin="0,0,0,0"
+                     PreviewTextInput ="IntTextBox_PreviewTextInput" 
                      Style="{StaticResource ModernTexBox}"/>
 
             <TextBlock Grid.Row="0"
@@ -54,50 +57,179 @@
                        FontSize="20"
                        Foreground="White"/>
 
-            <TextBox Grid.Row="0"
+            <TextBox x:Name="CreatinineTextBox"
+                     Grid.Row="0"
                      Grid.Column="3"
                      Margin="0,0,0,0"
+                     PreviewTextInput ="DoubleTextBox_PreviewTextInput"
                      Style="{StaticResource ModernTexBox}"/>
 
             <TextBlock Grid.Row="1"
-                        Grid.Column="0"
-                        Width="130"
-                        Height="40"
-                        VerticalAlignment="Center"
+                     Grid.Column="0"
+                     Width="130"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     TextAlignment="Right"
+                     Margin="0,12,0,0"
+                     Padding="0,0,10,0"
+                     Text="Height, cm :"
+                     FontSize="20"
+                     Foreground="White"/>
+
+            <TextBox x:Name="HeightTextBox"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Margin="0,0,0,0"
+                     PreviewTextInput ="IntTextBox_PreviewTextInput"
+                     Style="{StaticResource ModernTexBox}"/>
+
+            <TextBlock Grid.Row="2"
+                     Grid.Column="0"
+                     Width="130"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     TextAlignment="Right"
+                     Margin="0,12,0,0"
+                     Padding="0,0,10,0"
+                     Text="Weight, kg :"
+                     FontSize="20"
+                     Foreground="White"/>
+
+            <TextBox x:Name="WeightTextBox"
+                     Grid.Row="2"
+                     Grid.Column="1"
+                     Margin="0,0,0,0"
+                     PreviewTextInput ="IntTextBox_PreviewTextInput"
+                     Style="{StaticResource ModernTexBox}"/>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="2"
+                  Grid.RowSpan="2"
+                  Margin="20,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <RadioButton x:Name="mkMolL"
+                        Grid.Row="0"
+                        Content="µmol/L"
+                        FontSize="15"
+                        VerticalAlignment="Top"
                         HorizontalAlignment="Left"
-                        TextAlignment="Right"
-                        Margin="0,12,0,0"
-                        Padding="0,0,10,0"
-                        Text="Height, cm :"
+                        Height="20"
+                        Width="90"
+                        IsChecked="True"/>
+                    <RadioButton x:Name="mMolL"
+                        Grid.Row="0"
+                        Content="mmol/L"
+                        FontSize="15"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Height="20"
+                        Width="90"
+                        Margin="5,0,0,0"/>
+                    <RadioButton x:Name="mgDl"
+                        Grid.Row="0"
+                        Content="mg/dL"
+                        FontSize="15"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Height="20"
+                        Width="90"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <RadioButton x:Name="male"
+                        Content="Male"
+                        FontSize="15"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Height="20"
+                        Width="90"
+                        IsChecked="True"/>
+                    <RadioButton x:Name="female"
+                        Grid.Row="1"
+                        Content="Female"
+                        FontSize="15"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Height="20"
+                        Width="90"
+                        Margin="5,0,0,0"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <RadioButton x:Name="nonAfrican"
+                        Content="Non African"
+                        FontSize="15"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Height="20"
+                        Width="100"
+                        IsChecked="True"/>
+                    <RadioButton x:Name="african"
+                        Content="African"
+                        FontSize="15"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Height="20"
+                        Width="90"
+                        Margin="5,0,0,0"/>
+                </Grid>
+            </Grid>
+
+            
+            <Grid Grid.ColumnSpan="4"
+                    Grid.Column="0"
+                    Grid.Row ="3"
+                    Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label 
                         FontSize="20"
-                        Foreground="White"/>
-
-            <TextBox Grid.Row="1"
-                        Grid.Column="1"
-                        Margin="0,0,0,0"
-                        Style="{StaticResource ModernTexBox}"/>
-
-            <TextBlock Grid.Row="1"
-            Grid.Column="2"
-            Width="130"
-            Height="40"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            TextAlignment="Right"
-            Margin="0,12,0,0"
-            Padding="0,0,10,0"
-            Text="Weight, kg :"
-            FontSize="20"
-            Foreground="White"/>
-
-            <TextBox Grid.Row="1"
-            Grid.Column="3"
-            Margin="0,0,0,0"
-            Style="{StaticResource ModernTexBox}"/>
-
-            <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Items}"
-                  SelectedItem="{Binding SelectedItem}"
-                  Width="200" Height="30" />
+                        Grid.Row="0"
+                        Grid.RowSpan="4"
+                        Foreground="White"
+                        HorizontalAlignment="Center">
+                    <TextBlock Text ="{Binding LabelText}" TextWrapping="Wrap" />
+                </Label>
+                <Button x:Name="CalculateButton"
+                        Content="Calculate"
+                        HorizontalAlignment="Center"
+                        Width="150"
+                        Height="40"
+                        Grid.Row="4"
+                        Grid.Column="3"
+                        Background="#353340"
+                        Foreground="DarkGray"
+                        FontSize="19" Click="CalculateButton_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="PART_Border"
+                CornerRadius="10"
+                Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="PART_Border" Property="Background" Value="#4A4854"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            
         </Grid>
         
 
