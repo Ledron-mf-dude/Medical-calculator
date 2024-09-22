@@ -40,20 +40,34 @@
                 FontSize="25"/>
             <StackPanel Grid.Row="1" Margin="0,0,0,0">
                 <RadioButton
-                    Content="GFR calculator"
+                    Content="GFR"
                     Foreground="#F0F0F0"
                     Height="60"
-                    FontSize="20"
+                    FontSize="25"
                     Style="{StaticResource MenuButtonTheme}"
                     IsChecked="True"
                     Command="{Binding GFRViewCommand}"/>
                 <RadioButton
-                    Content="BSA calculator"
+                    Content="BSA"
                     Foreground="#F0F0F0"
                     Height="60"
-                    FontSize="20"
+                    FontSize="25"
                     Style="{StaticResource MenuButtonTheme}"
                     Command="{Binding BSAViewCommand}"/>
+                <RadioButton
+                    Content="ABSI"
+                    Foreground="#F0F0F0"
+                    Height="60"
+                    FontSize="25"
+                    Style="{StaticResource MenuButtonTheme}"
+                    Command="{Binding ABSIViewCommand}"/>
+                <RadioButton
+                    Content="Ca conc."
+                    Foreground="#F0F0F0"
+                    Height="60"
+                    FontSize="25"
+                    Style="{StaticResource MenuButtonTheme}"
+                    Command="{Binding CaConcViewCommand}"/>
             </StackPanel>
 
             <Grid Grid.Row="0" Grid.Column="1">

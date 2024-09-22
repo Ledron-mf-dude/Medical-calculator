@@ -10,8 +10,6 @@ namespace Medical_calculator.MVVM.View
 {
     public partial class BSACalcView : UserControl, INotifyPropertyChanged
     {
-        
-
         private string _labelText;
 
         public string LabelText
@@ -32,7 +30,7 @@ namespace Medical_calculator.MVVM.View
 
             DataContext = this;
 
-            LabelText = "Result:";
+            //LabelText = "Result:";
         }
 
         protected void OnPropertyChanged(string propertyName)

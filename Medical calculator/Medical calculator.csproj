@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\ViewModel\WarningViewModel.cs" />
+    <Compile Include="WarningWindow.xaml.cs">
+      <DependentUpon>WarningWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,7 +73,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\ABSICalcView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\BSACalcView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\CaConcCalcView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,6 +101,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WarningWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Model\BSACalculator.cs" />
@@ -98,11 +114,19 @@
     <Compile Include="MVVM\Model\DataStructures\GFRTemplateParams.cs" />
     <Compile Include="MVVM\Model\DataStructures\ParamsForGRF.cs" />
     <Compile Include="MVVM\Model\TemplateGenerator.cs" />
+    <Compile Include="MVVM\ViewModel\ABSICalcViewModel.cs" />
     <Compile Include="MVVM\ViewModel\BSACalcViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\CaConcCalcViewModel.cs" />
     <Compile Include="MVVM\ViewModel\GFRCalcViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\View\ABSICalcView.xaml.cs">
+      <DependentUpon>ABSICalcView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\BSACalcView.xaml.cs">
       <DependentUpon>BSACalcView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\CaConcCalcView.xaml.cs">
+      <DependentUpon>CaConcCalcView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\GFRCalcView.xaml.cs">
       <DependentUpon>GFRCalcView.xaml</DependentUpon>

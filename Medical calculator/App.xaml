@@ -20,7 +20,15 @@
             <DataTemplate DataType="{x:Type viewModel:GFRCalcViewModel}">
                 <view:GFRCalcView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:ABSICalcViewModel}">
+                <view:ABSICalcView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CaConcCalcViewModel}">
+                <view:CaConcCalcView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

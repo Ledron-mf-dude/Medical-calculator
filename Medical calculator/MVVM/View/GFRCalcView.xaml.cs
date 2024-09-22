@@ -10,8 +10,6 @@ namespace Medical_calculator.MVVM.View
 {
     public partial class GFRCalcView : UserControl, INotifyPropertyChanged
     {
-        
-
         private string _labelText;
 
         public string LabelText
@@ -37,7 +35,7 @@ namespace Medical_calculator.MVVM.View
 
             DataContext = this;
 
-            LabelText = "Result:";
+            //LabelText = "Result:";
         }
 
         private void IntTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
