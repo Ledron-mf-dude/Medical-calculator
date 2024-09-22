@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Medical_calculator.MVVM.Model.DataStructures;
+using Medical_calculator.MVVM.Model;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Medical_calculator.MVVM.View
 {
     public partial class CaConcCalcView : UserControl, INotifyPropertyChanged
     {
+        private const string _numericPattern = @"@""^\d*\.?\d*$""";
+
         private string _labelText;
 
         public string LabelText
@@ -36,6 +29,8 @@ namespace Medical_calculator.MVVM.View
         public CaConcCalcView()
         {
             InitializeComponent();
+
+            DataContext = this;
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -43,16 +38,57 @@ namespace Medical_calculator.MVVM.View
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void IntTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void DoubleTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            TextBox textBox = sender as TextBox;
+            string fullText = textBox.Text + e.Text;
+
+            Regex regex = new Regex(@"^\d*\.?\d{0,2}$");
+            e.Handled = !regex.IsMatch(fullText);
         }
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
-            //string result = GetTextResult();
-            //SetResultToLable(result);
+            string result = GetTextResult();
+            SetResultToLable(result);
+        }
+
+        private void SetResultToLable(string result)
+        {
+            if (string.IsNullOrEmpty(result))
+            {
+                LabelText = "Error!";
+            }
+            else
+            {
+                LabelText = result;
+            }
+        }
+
+        private string GetTextResult()
+        {
+            ParamsForCaConc paramsForBSA = GetParamsObject();
+            CaConcCalculator caConcCalculator = new CaConcCalculator(paramsForBSA);
+
+            double caConcDl = caConcCalculator.GetCaConcInDl();
+            double caConcMmol = caConcCalculator.GetCaConcInMmol();
+
+            CaConcTemplateParams caConcTemplateParams = new CaConcTemplateParams(caConcDl, caConcMmol);
+
+            string resultStr = TemplateGenerator.GetCaConcResponseTemplate(caConcTemplateParams);
+
+            return resultStr;
+        }
+
+        private ParamsForCaConc GetParamsObject()
+        {
+            var paramsObject = new ParamsForCaConc();
+
+            paramsObject.CaTotalStr = CaTotalTextBox.Text;
+            paramsObject.AlbuminStr = AlbuminTextBox.Text;
+            paramsObject.IsValueInDl = (bool)mgDL.IsChecked;
+
+            return paramsObject;
         }
 
         private void mgDL_Checked(object sender, RoutedEventArgs e)

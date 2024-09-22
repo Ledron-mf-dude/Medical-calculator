@@ -1,25 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Medical_calculator.MVVM.Model.DataStructures;
+using Medical_calculator.MVVM.Model;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Medical_calculator.MVVM.View
 {
-    /// <summary>
-    /// Interaction logic for ABSICalcView.xaml
-    /// </summary>
     public partial class ABSICalcView : UserControl, INotifyPropertyChanged
     {
         private string _labelText;
@@ -41,8 +29,6 @@ namespace Medical_calculator.MVVM.View
             InitializeComponent();
 
             DataContext = this;
-
-            //LabelText = "Result:";
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -58,8 +44,46 @@ namespace Medical_calculator.MVVM.View
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
-            //string result = GetTextResult();
-            //SetResultToLable(result);
+            string result = GetTextResult();
+            SetResultToLable(result);
+        }
+
+        private string GetTextResult()
+        {
+            ParamsForABSI paramsForABSI = GetParamsObject();
+            ABSICalculator absiCalculator = new ABSICalculator(paramsForABSI);
+
+            double absi = absiCalculator.GetABSI();
+            double bmi = absiCalculator.GetBMI();
+
+            ABSITemplateParams bsaTemplateParams = new ABSITemplateParams(absi, bmi);
+
+            string resultStr = TemplateGenerator.GetABSIResponseTemplate(bsaTemplateParams);
+
+            return resultStr;
+        }
+
+        private ParamsForABSI GetParamsObject()
+        {
+            var paramsObject = new ParamsForABSI();
+
+            paramsObject.HeightStr = HeightTextBox.Text;
+            paramsObject.WeightStr = WeightTextBox.Text;
+            paramsObject.WaistCircumferenceStr = WaistCircumferenceTextBox.Text;
+
+            return paramsObject;
+        }
+
+        private void SetResultToLable(string result)
+        {
+            if (string.IsNullOrEmpty(result))
+            {
+                LabelText = "Error!";
+            }
+            else
+            {
+                LabelText = result;
+            }
         }
     }
 }

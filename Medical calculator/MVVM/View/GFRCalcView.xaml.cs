@@ -34,8 +34,6 @@ namespace Medical_calculator.MVVM.View
             InitializeComponent();
 
             DataContext = this;
-
-            //LabelText = "Result:";
         }
 
         private void IntTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

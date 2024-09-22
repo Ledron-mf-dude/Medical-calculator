@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\Model\ABSICalculator.cs" />
+    <Compile Include="MVVM\Model\CaConcCalculator.cs" />
+    <Compile Include="MVVM\Model\DataStructures\ABSITemplateParams.cs" />
+    <Compile Include="MVVM\Model\DataStructures\CaConcTemplateParams.cs" />
+    <Compile Include="MVVM\Model\DataStructures\ParamsForABSI.cs" />
+    <Compile Include="MVVM\Model\DataStructures\ParamsForCaConc.cs" />
     <Compile Include="MVVM\ViewModel\WarningViewModel.cs" />
     <Compile Include="WarningWindow.xaml.cs">
       <DependentUpon>WarningWindow.xaml</DependentUpon>

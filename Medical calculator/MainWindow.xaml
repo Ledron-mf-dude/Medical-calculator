@@ -55,7 +55,7 @@
                     Style="{StaticResource MenuButtonTheme}"
                     Command="{Binding BSAViewCommand}"/>
                 <RadioButton
-                    Content="ABSI"
+                    Content="ABSI / BMI"
                     Foreground="#F0F0F0"
                     Height="60"
                     FontSize="25"

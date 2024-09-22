@@ -29,8 +29,6 @@ namespace Medical_calculator.MVVM.View
             InitializeComponent();
 
             DataContext = this;
-
-            //LabelText = "Result:";
         }
 
         protected void OnPropertyChanged(string propertyName)
