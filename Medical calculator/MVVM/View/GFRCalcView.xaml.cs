@@ -47,7 +47,7 @@ namespace Medical_calculator.MVVM.View
             TextBox textBox = sender as TextBox;
             string fullText = textBox.Text.Insert(textBox.SelectionStart, e.Text);
 
-            Regex regex = new Regex(@"^\d*\.?\d{0,2}$");
+            Regex regex = new Regex(@"^\d*\.?\d{0,4}$");
             e.Handled = !regex.IsMatch(fullText);
         }
 
