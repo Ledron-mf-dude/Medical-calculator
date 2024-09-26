@@ -1,4 +1,6 @@
-﻿namespace Medical_calculator.MVVM.Model.DataStructures
+﻿using System.Globalization;
+
+namespace Medical_calculator.MVVM.Model.DataStructures
 {
     public class ParamsForGRF
     {
@@ -71,7 +73,7 @@
             get => _creatinineStr;
             set
             {
-                if (double.TryParse(value, out double parseCreatinine))
+                if (double.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out double parseCreatinine))
                 {
                     _creatinine = parseCreatinine;
                 }
